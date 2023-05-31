@@ -1,0 +1,71 @@
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4><b>Manage Drivers</b></h4>
+          </div>
+          <div class="col-sm-6">
+            <button class="btn btn-success" (click)="AddDriverList()">
+              <i class="fa fa-plus-circle"></i><span>Add Driver List</span>
+            </button>
+            <button class="btn btn-success" (click)="AddDriver()">
+              <i class="fa fa-plus-circle"></i><span> ADD</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <table
+        class="table table-striped table-hover table-bordered table-content"
+      >
+        <thead>
+          <tr class="center-align">
+            <th>
+              <button type="button" (click)="orderDrivers()" class="btn">
+                <i class="fa fa-sort-alpha-asc"></i></button
+              >First Name
+            </th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let driver of driverList" class="center-align">
+            <td>{{ driver.firstName }}</td>
+            <td>{{ driver.lastName }}</td>
+            <td>{{ driver.email }}</td>
+            <td>{{ driver.phoneNumber }}</td>
+            <td class="actions">
+              <a href="#" [routerLink]="['/ViewDriver/', driver.id]" class="btn"
+                ><i class="fa fa-eye view"></i
+              ></a>
+              <a href="#" [routerLink]="['/EditDriver/', driver.id]" class="btn"
+                ><i class="fa fa-edit edit"></i
+              ></a>
+              <button
+                type="button"
+                (click)="deleteDriverConfirmation(driver)"
+                class="btn"
+              >
+                <i class="fa fa-trash delete"></i>
+              </button>
+              <button
+                type="button"
+                (click)="orderDriverName(driver)"
+                class="btn"
+              >
+                <i class="fa fa-sort-alpha-asc"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td *ngIf="driverList.length == 0" colspan="6">No Driver Found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

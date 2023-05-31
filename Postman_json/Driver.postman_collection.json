@@ -1,0 +1,399 @@
+{
+	"info": {
+		"_postman_id": "949d4663-f908-4f92-94b3-4165ffcce848",
+		"name": "Driver",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25867893"
+	},
+	"item": [
+		{
+			"name": "GetAllDrivers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{driverApiUrl}}/Drivers",
+					"host": [
+						"{{driverApiUrl}}"
+					],
+					"path": [
+						"Drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateDriver",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function makeid(length) {\r",
+							"    let result = '';\r",
+							"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+							"    const charactersLength = characters.length;\r",
+							"    let counter = 0;\r",
+							"    while (counter < length) {\r",
+							"      result += characters.charAt(Math.floor(Math.random() * charactersLength));\r",
+							"      counter += 1;\r",
+							"    }\r",
+							"    return result;\r",
+							"}\r",
+							"pm.variables.set(\"RandomFirstName\", makeid(5));\r",
+							"pm.variables.set(\"RandomLastName\", makeid(6));\r",
+							"pm.variables.set(\"RandomNumber\", Math.floor((Math.random() * 10000000000) + 1));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"{{RandomFirstName}}\",\r\n    \"lastName\": \"{{RandomLastName}}\",\r\n    \"email\": \"{{RandomLastName}}@example.com\",\r\n    \"phoneNumber\": \"{{RandomNumber}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{driverApiUrl}}/Drivers",
+					"host": [
+						"{{driverApiUrl}}"
+					],
+					"path": [
+						"Drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDriverById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{driverApiUrl}}/Drivers/1",
+					"host": [
+						"{{driverApiUrl}}"
+					],
+					"path": [
+						"Drivers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDriver",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\",\r\n    \"email\": \"qUcxNc@example.com\",\r\n    \"phoneNumber\": \"7777777777\"\r\n}"
+				},
+				"url": {
+					"raw": "{{driverApiUrl}}/Drivers/100",
+					"host": [
+						"{{driverApiUrl}}"
+					],
+					"path": [
+						"Drivers",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteDriver",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{driverApiUrl}}/Drivers/1",
+					"host": [
+						"{{driverApiUrl}}"
+					],
+					"path": [
+						"Drivers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateRandomDriverList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{driverApiUrl}}/Drivers/CreateRandomList?listLength=100",
+					"host": [
+						"{{driverApiUrl}}"
+					],
+					"path": [
+						"Drivers",
+						"CreateRandomList"
+					],
+					"query": [
+						{
+							"key": "listLength",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrderedDrivers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{driverApiUrl}}/Drivers/GetOrderedDrivers",
+					"host": [
+						"{{driverApiUrl}}"
+					],
+					"path": [
+						"Drivers",
+						"GetOrderedDrivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateDriverList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"firstName\": \"sterin2g\",\r\n        \"lastName\": \"stri5eng\",\r\n        \"email\": \"u8seer@example.com\",\r\n        \"phoneNumber\": \"77778777777\"\r\n    },\r\n    {\r\n        \"firstName\": \"stre5ing\",\r\n        \"lastName\": \"st5rieng\",\r\n        \"email\": \"useefr2@example.com\",\r\n        \"phoneNumber\": \"7577777777\"\r\n    }\r\n]"
+				},
+				"url": {
+					"raw": "{{driverApiUrl}}/Drivers/CreateDriverList",
+					"host": [
+						"{{driverApiUrl}}"
+					],
+					"path": [
+						"Drivers",
+						"CreateDriverList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserAlphabetized",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{driverApiUrl}}/Drivers/GetUserAlphabetized?id=100",
+					"host": [
+						"{{driverApiUrl}}"
+					],
+					"path": [
+						"Drivers",
+						"GetUserAlphabetized"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

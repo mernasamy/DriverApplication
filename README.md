@@ -30,6 +30,9 @@ This repo contains a full stack application submitted to Transflo team. To get s
 
 > Run `ng serve` for a dev server
 
+![Angular App1](https://github.com/mernasamy/DriverApplication/assets/11517875/b5d561fc-11a4-4356-84c3-9205cb506d79)
+![Angular App2](https://github.com/mernasamy/DriverApplication/assets/11517875/9947c104-71d4-4754-950f-5ca9c1b3be80)
+
 Driver application uses the following libraries:
 
 - SQL Server for the database
@@ -53,8 +56,10 @@ PLEASE CHECK DriverDb schema for data shapes
 
 ### Tables
 
-Schema | Name | Type | Owner
+Schema   | Name    | Type  | Owner
+
 ---------+---------+-------+--------
+
 DriverDb | Drivers | table | SQL
 
 # Driver Web API Documentation
